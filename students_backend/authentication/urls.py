@@ -6,5 +6,5 @@ from django.urls import path
 from authentication import signup
 
 urlpatterns = [
-    path("myAuth/", signup.myAuth),
+    path("signUp/", signup.signUp),
 ]
