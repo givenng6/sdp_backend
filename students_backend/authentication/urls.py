@@ -10,4 +10,5 @@ from authentication import login
 urlpatterns = [
     path("signUp/", signup.signUp),
     path("login/", login.login),
+    path("reset/", login.reset)
 ]

@@ -26,3 +26,12 @@ def login(request):
     else:
         # not on our database or password and email do no match
         return Response({"status": "invalid", "reason": "Password or email incorrect"})
+
+@api_view(["POST"])
+def reset(request):
+    email = request.data["email"]
+
+    if(pyrebase.resetPassword(email)):
+        return Response({"status": "valid"})
+    
+    return Response({"status": "invalid"})

@@ -29,3 +29,11 @@ def signIn(email, password):
     return True
   except:
       return False
+
+# reset the password of the user...
+def resetPassword(email):
+  try:
+    auth.send_password_reset_email(email)
+    return True
+  except:
+    return False
