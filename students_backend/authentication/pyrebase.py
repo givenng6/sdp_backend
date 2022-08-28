@@ -21,3 +21,11 @@ def sendLink(email, password):
     user = auth.refresh(user['refreshToken'])
     # now we have a fresh token
     auth.send_email_verification(user['idToken'])
+
+def signIn(email, password):
+  try:
+    auth.sign_in_with_email_and_password(email, password);
+    #data = self.getUser()
+    return True
+  except:
+      return False
