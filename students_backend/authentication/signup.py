@@ -3,6 +3,7 @@ from rest_framework.decorators import api_view
 from firebase_admin import auth
 from authentication import firebase_key
 from authentication import pyrebase
+from database import users
 
 # check userType
 def isUserValid(kind, email):
@@ -15,7 +16,7 @@ def isUserValid(kind, email):
     else:
         return False
 
-def createAccount(userEmail, userPassword, username):
+def createAccount(userEmail, userPassword, username, kind):
     try:
         auth.create_user(
         email = userEmail,
@@ -26,6 +27,7 @@ def createAccount(userEmail, userPassword, username):
 
         #send the veryfication email...
         pyrebase.sendLink(userEmail, userPassword)
+        users.add_user(userEmail, username, kind)
         return {"status": 'valid', "reason": 'Account created'}
 
     except:
@@ -35,13 +37,14 @@ def createAccount(userEmail, userPassword, username):
 
 @api_view(['POST'])
 def signUp(request):
+    print(request.data)
     kind = request.data["kind"]
     email = request.data["email"]
     password = request.data["password"]
     username = request.data["username"]
 
     if(isUserValid(kind, email)):
-        return Response(createAccount(email, password, username))
+        return Response(createAccount(email, password, username, kind))
     else:
         return Response({"status": 'invalid', "reason": 'Use correct Wits account'})
 

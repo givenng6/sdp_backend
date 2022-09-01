@@ -15,3 +15,5 @@ cred = credentials.Certificate({
 })
 
 firebase_admin.initialize_app(cred)
+
+
