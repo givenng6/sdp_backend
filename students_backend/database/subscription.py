@@ -9,11 +9,12 @@ db = firebase_admin.firestore.client()
 @api_view(["POST"])
 def add_sub(request):
     email = request.data["email"]
-    services = request.data["service"]
+    service = request.data["service"]
 
     ref = db.collection("Users").document(email)
+    ref.update({'subs': firestore.ArrayUnion([service])})
 
-    ref.update({u'capital': True})
+    return Response({"status": "sent"})
 
 
 
