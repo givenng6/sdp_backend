@@ -7,5 +7,6 @@ from database import users
 from database import subscription
 
 urlpatterns = [
-    path("addSub/", subscription.add_sub)
+    path("addSub/", subscription.add_sub),
+    path("getSub/", subscription.get_sub),
 ]

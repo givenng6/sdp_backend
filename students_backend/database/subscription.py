@@ -16,6 +16,20 @@ def add_sub(request):
 
     return Response({"status": "sent"})
 
+@api_view(["GET"])
+def get_sub(request):
+    email = request.data["email"]
+
+    ref = db.collection('Users').document(email)
+
+    doc = ref.get()
+    subs = []
+    try:
+        subs = doc.to_dict()["subs"]
+    except:
+        pass
+
+    return Response({"subs": subs})
 
 
 
