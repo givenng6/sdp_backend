@@ -16,7 +16,7 @@ def add_sub(request):
 
     return Response({"status": "sent"})
 
-@api_view(["GET"])
+@api_view(["POST"])
 def get_sub(request):
     email = request.data["email"]
 
