@@ -29,7 +29,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='django-insecure-uuedjjebs)+l%
 DEBUG = 'RENDER' not in os.environ
 
 
-ALLOWED_HOSTS = ['127.0.0.1', '10.0.1.55', '192.168.137.217', '192.168.98.22', '10.203.238.89']
+ALLOWED_HOSTS = ['127.0.0.1', '10.0.1.55', '192.168.137.217', '192.168.98.22', '10.203.238.89', 'https://sdpbackend-production.up.railway.app/', 'sdpbackend-production.up.railway.app/']
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:   
